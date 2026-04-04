@@ -5,6 +5,7 @@ import SummaryCard from "./components/SummaryCard";
 import AddExpensesForm from "./components/AddExpensesForm";
 import { Filter } from "lucide-react";
 import FilterTab from "./components/FilterTab";
+import ExpensesList from "./components/ExpensesList";
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
         <div className="xl:col-span-3">
           <div className="bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
             <FilterTab />
+
+            {/* Expenses List */}
+            <ExpensesList />
           </div>
         </div>
       </div>
