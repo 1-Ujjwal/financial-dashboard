@@ -2,6 +2,9 @@ import React from "react";
 import Toast from "./components/Toast";
 import Header from "./components/Header";
 import SummaryCard from "./components/SummaryCard";
+import AddExpensesForm from "./components/AddExpensesForm";
+import { Filter } from "lucide-react";
+import FilterTab from "./components/FilterTab";
 
 const App = () => {
   return (
@@ -15,6 +18,19 @@ const App = () => {
 
       {/* SummaryCard */}
       <SummaryCard />
+
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
+        {/* Add Expenses Form */}
+        <div className="xl:col-span-2">
+          <AddExpensesForm />
+        </div>
+
+        <div className="xl:col-span-3">
+          <div className="bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+            <FilterTab />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
