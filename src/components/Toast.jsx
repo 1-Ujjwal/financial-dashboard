@@ -8,7 +8,7 @@ const Toast = ({ Toast, RemoveToast }) => {
         <div
           key={t.id}
           className={`flex items-center p-4 rounded-lg shadow-lg backdrop-blur-sm border transform transition-all duration-300 easy-in-out ${
-            Toast.type === "success"
+            t.type === "success"
               ? "bg-green-900/80 border-green-700 text-green-100"
               : Toast.type === "error"
                 ? "bg-red-900/80 border-red-700 text-red-100"
@@ -17,19 +17,17 @@ const Toast = ({ Toast, RemoveToast }) => {
         >
           {/*Conditional Rendering */}
 
-          {Toast.type === "success" && (
-            <Check className="w-5 h-5 mr-2 shrink-0" />
-          )}
+          {t.type === "success" && <Check className="w-5 h-5 mr-2 shrink-0" />}
 
-          {Toast.type === "error" && (
+          {t.type === "error" && (
             <AlertCircle className="w-5 h-5 mr-2 shrink-0" />
           )}
 
-          {Toast.type === "info" && (
+          {t.type === "info" && (
             <AlertCircle className="w-5 h-5 mr-2 shrink-0" />
           )}
 
-          <span className="mr-2">Toast Message</span>
+          <span className="mr-2">{t.message}</span>
           <button
             className="ml-auto text-gray-300 hover:text-white transition-colors"
             onClick={() => RemoveToast(t.id)}

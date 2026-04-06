@@ -153,12 +153,12 @@ const AddExpensesForm = ({
             onChange={(e) => {
               setFormData({
                 ...formData,
-                type: e.target.value,
+                description: e.target.value,
               });
               if (errors.description) setErrors({ ...errors, description: "" });
             }}
             placeholder="What's this For"
-            className={`w-full px-6 py-4 bg-gray-800/50 border-2 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all`}
+            className={`w-full pl-12 pr-6 py-4 bg-gray-800/50 border-2 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all ${errors.description ? "border-red-500" : "border-gray-600 focus:border-purple-50"}`}
           />
           {/* Conditional Rendering */}
           {errors.description && (
@@ -183,12 +183,12 @@ const AddExpensesForm = ({
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  type: e.target.value,
+                  amount: e.target.value,
                 });
                 if (errors.amount) setErrors({ ...errors, amount: "" });
               }}
               step="0.01"
-              className={`w-full pl-12 pr-6 py-4 bg-gray-800/50 border-2 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all ${errors.amount ? "border-red-500" : "border-gray-600 focus:border-purple-500"}`}
+              className={`w-full pl-12 pr-6 py-4 bg-gray-800/50 border-2 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all ${errors.amount ? "border-red-500" : "border-gray-600 focus:border-purple-50"}`}
               placeholder="0.00"
             />
           </div>
@@ -210,7 +210,7 @@ const AddExpensesForm = ({
             onChange={(e) => {
               setFormData({
                 ...formData,
-                type: e.target.value,
+                category: e.target.value,
               });
               if (errors.category) setErrors({ ...errors, category: "" });
             }}
@@ -245,7 +245,7 @@ const AddExpensesForm = ({
             onChange={(e) => {
               setFormData({
                 ...formData,
-                type: e.target.value,
+                date: e.target.value,
               });
               if (errors.date) setErrors({ ...errors, date: "" });
             }}

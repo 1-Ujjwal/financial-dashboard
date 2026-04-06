@@ -77,7 +77,7 @@ const App = () => {
 
         <div className="xl:col-span-3">
           <div className="bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-            <FilterTab />
+            <FilterTab filter={filter} setFilter={setFilter} />
 
             {/* Expenses List */}
             <ExpensesList />
