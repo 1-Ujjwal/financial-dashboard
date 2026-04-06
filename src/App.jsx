@@ -45,6 +45,11 @@ const App = () => {
 
   const balance = totalIncome - totalExpenses;
 
+  const filteredExpenses = expenses.filter((exp) => {
+    if (filter === "all") return true;
+    return exp.type === filter;
+  });
+
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
       <Toast Toast={toast} RemoveToast={RemoveToast} />
@@ -80,7 +85,7 @@ const App = () => {
             <FilterTab filter={filter} setFilter={setFilter} />
 
             {/* Expenses List */}
-            <ExpensesList />
+            <ExpensesList filteredExpenses={filteredExpenses} />
           </div>
         </div>
       </div>
