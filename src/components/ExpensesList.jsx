@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import React from "react";
 
-const ExpensesList = ({ filteredExpenses }) => {
+const ExpensesList = ({ filteredExpenses, handleEdit, handleDelete }) => {
   return (
     <div className="p-8 max-h-96 overflow-y-auto">
       {filteredExpenses.length === 0 ? (
@@ -64,10 +64,16 @@ const ExpensesList = ({ filteredExpenses }) => {
                   {exp.type === "income" ? "+" : "-"}${exp.amount.toFixed(2)}
                 </span>
                 <div className="flex space-x-2">
-                  <button className="p-3 text-gray-400 hover:text-blue-400 hover:bg-blue-500/20 rounded-xl transition-all duration-200">
+                  <button
+                    className="p-3 text-gray-400 hover:text-blue-400 hover:bg-blue-500/20 rounded-xl transition-all duration-200"
+                    onClick={() => handleEdit(exp)}
+                  >
                     <Edit2 className="w-5 h-5" />
                   </button>
-                  <button className="p-3 text-gray-400 hover:text-red-400 hover:bg-red-500/20 rounded-xl transition-all duration-200">
+                  <button
+                    className="p-3 text-gray-400 hover:text-red-400 hover:bg-red-500/20 rounded-xl transition-all duration-200"
+                    onClick={() => handleDelete(exp.id)}
+                  >
                     <Trash2 className="w-5 h-5" />
                   </button>
                 </div>
