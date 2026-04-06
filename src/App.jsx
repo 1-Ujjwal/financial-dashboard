@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Toast from "./components/Toast";
 import Header from "./components/Header";
 import SummaryCard from "./components/SummaryCard";
@@ -8,6 +8,13 @@ import FilterTab from "./components/FilterTab";
 import ExpensesList from "./components/ExpensesList";
 
 const App = () => {
+  const [formData, setFormData] = useState({
+    description: "",
+    amount: "",
+    category: "",
+    date: "",
+    type: "income",
+  });
   const [editingId, setIsEditingId] = useState(null);
   const [expenses, setExpenses] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -28,6 +35,16 @@ const App = () => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const totalIncome = expenses
+    .filter((exp) => exp.type === "income")
+    .reduce((acc, exp) => acc + exp, 0);
+
+  const totalExpenses = expenses
+    .filter((exp) => exp.type === "expense")
+    .reduce((acc, exp) => acc + exp.amount, 0);
+
+  const balance = totalIncome - totalExpenses;
+
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
       <Toast Toast={toast} RemoveToast={RemoveToast} />
@@ -38,12 +55,24 @@ const App = () => {
       </div>
 
       {/* SummaryCard */}
-      <SummaryCard />
+      <SummaryCard
+        totalIncome={totalIncome}
+        totalExpenses={totalExpenses}
+        balance={balance}
+      />
 
       <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
         {/* Add Expenses Form */}
         <div className="xl:col-span-2">
-          <AddExpensesForm />
+          <AddExpensesForm
+            formData={formData}
+            setFormData={setFormData}
+            editingId={editingId}
+            setIsEditingId={setIsEditingId}
+            expenses={expenses}
+            setExpenses={setExpenses}
+            showToast={showToast}
+          />
         </div>
 
         <div className="xl:col-span-3">
